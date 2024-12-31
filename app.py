@@ -3,7 +3,8 @@ import matplotlib.pyplot as plt
 import io
 import numpy as np
 import base64
-from algorithm.logistic_regression import predict_using_logistic_regression
+from prediction import predict
+from accuracies import accuracy_scores, algorithm_labels
 app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
@@ -11,27 +12,29 @@ def index():
     if request.method == "POST":
         try:
             # Get input values from form
+            algorithm = request.form["algorithm"]
             author = request.form["author"]
             article = request.form["article"]
-            result = predict_using_logistic_regression(author + " " + article) 
+            result = predict(author + " " + article, algorithm) 
             print(result)
-            return render_template("index.html", result=result)
+            # return render_template("index.html", result=result)
 
-            # # Create a bar chart to display the result
-            # fig, ax = plt.subplots()
-            # ax.bar(['First Number', 'Second Number', 'Sum'], [num1, num2, result], color=['blue', 'orange', 'green'])
-            # ax.set_ylabel('Values')
-            # ax.set_title('Sum Visualization')
+            # Create a bar chart to display the result
+            fig, ax = plt.subplots()
+            ax.bar(algorithm_labels, accuracy_scores, color=['blue', 'orange', 'green', 'red', 'purple'])
+            ax.set_xlabel('Algorithms')
+            ax.set_ylabel('Accuracy')
+            ax.set_title('Accuracy Visualization')
 
-            # # Save the plot to a BytesIO object
-            # img = io.BytesIO()
-            # plt.savefig(img, format='png')
-            # img.seek(0)  # Rewind the file pointer to the beginning
+            # Save the plot to a BytesIO object
+            img = io.BytesIO()
+            plt.savefig(img, format='png')
+            img.seek(0)  # Rewind the file pointer to the beginning
 
-            # # Encode image as base64
-            # img_base64 = base64.b64encode(img.getvalue()).decode('utf-8')
+            # Encode image as base64
+            img_base64 = base64.b64encode(img.getvalue()).decode('utf-8')
 
-            # return render_template("index.html", result=result, img_data=img_base64)
+            return render_template("index.html", result=result, img_data=img_base64)
         except ValueError as e:
             print(e)
             result = "Some Error occurred!"
@@ -41,3 +44,8 @@ def index():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+# steps to run project:
+# 1. pip install -r requirements.txt
+# 2. python app.py

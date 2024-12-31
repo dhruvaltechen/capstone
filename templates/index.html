@@ -68,6 +68,10 @@
             text-align: center;
             margin-top: 20px;
         }
+
+        .chart {
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -82,9 +86,10 @@
             <option value="naive_bayes">Naive Bayes</option>
             <option value="support_vector_machine">Support Vector Machine</option>
         </select>
-        <input type="text" name="author" class="input-field" placeholder="Enter the Author name" required>
-        <input type="text" name="article" class="input-field" placeholder="Enter the Text" required>
+        <input type="text" name="author" value="{{ request.form.author }}" class="input-field" placeholder="Enter the Author name" required>
+        <input type="text" name="article" value="{{ request.form.article }}" class="input-field" placeholder="Enter the Text" required>
         <button type="submit" class="btn">Check</button>
+
     </form>
 
     {% if result is not none %}
@@ -97,6 +102,12 @@
     </div>
     {% endif %}
 
+    {% if img_data is not none %}
+    <div class="chart-container">
+        <h2>Bar Chart of Your Inputs</h2>
+        <img class="chart" src="data:image/png;base64,{{ img_data }}" alt="Bar Chart">
+    </div>
+    {% endif %}
 
 </div>
 

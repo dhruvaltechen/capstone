@@ -5,7 +5,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
-from pre_processing import stemmed_data
+from pre_processing import stemmed_data, stemming
 #pandas for making the dataframe
 
 news_data, answer_label = stemmed_data()
@@ -32,10 +32,9 @@ test_data_accuracy_logistic_regression = accuracy_score(X_test_prediction, Y_tes
 print('Accuracy score of the test data : ', test_data_accuracy_logistic_regression)
 
 def predict_using_logistic_regression(text):
-  new_texts = [text] # Ensure new_texts is a list of strings
+  new_texts = [stemming(text)] # Ensure new_texts is a list of strings
   news_data = vectorizer.transform(new_texts)
   prediction = model.predict(news_data)
-  print(prediction[0], 'lll')
   if (prediction[0]=='0'):
     return 'The news is Real 🤩'
   else:
