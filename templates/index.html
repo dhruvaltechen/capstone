@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capstone Project</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 2s ease;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            text-align: center;
+            font-size: 20px;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .chart-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Fake news Detection Using ML Algorithms</h1>
+    <form method="POST" action="">
+        <select name="algorithm" class="input-field" id="cars">
+            <option value="logistic_regression">Logistic Regression</option>
+            <option value="decision_tree">Decision Tree</option>
+            <option value="k_nearest_neighbor">K Nearest Neighbors</option>
+            <option value="naive_bayes">Naive Bayes</option>
+            <option value="support_vector_machine">Support Vector Machine</option>
+        </select>
+        <input type="text" name="author" class="input-field" placeholder="Enter the Author name" required>
+        <input type="text" name="article" class="input-field" placeholder="Enter the Text" required>
+        <button type="submit" class="btn">Check</button>
+    </form>
+
+    {% if result is not none %}
+    <div class="result">
+        {% if result == "Please enter valid numbers!" %}
+            <p class="error">{{ result }}</p>
+        {% else %}
+            <p><strong>{{ result }}</strong></p>
+        {% endif %}
+    </div>
+    {% endif %}
+
+
+</div>
+
+</body>
+</html>
