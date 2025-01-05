@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 import matplotlib.pyplot as plt
 import io
-import numpy as np
 import base64
 from prediction import predict
 from accuracies import accuracy_scores, algorithm_labels
@@ -20,7 +19,7 @@ def index():
             # return render_template("index.html", result=result)
 
             # Create a bar chart to display the result
-            fig, ax = plt.subplots()
+            ax = plt.subplots()
             ax.bar(algorithm_labels, accuracy_scores, color=['blue', 'orange', 'green', 'red', 'purple'])
             ax.set_xlabel('Algorithms')
             ax.set_ylabel('Accuracy')

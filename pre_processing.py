@@ -11,9 +11,6 @@ from nltk.corpus import stopwords
 #for stemming
 from nltk.stem import PorterStemmer
 
-#for TF-IDF Vectorization
-from sklearn.feature_extraction.text import TfidfVectorizer
-
 #natural language toolkit
 import nltk
 

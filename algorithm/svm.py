@@ -17,10 +17,10 @@ svm_model.fit(X_train, Y_train)
 
 
 # accuracy score on the test data
-X_test_prediction = svm_model.predict(X_test)
-test_data_accuracy_svm = accuracy_score(X_test_prediction, Y_test)
+Y_test_prediction = svm_model.predict(X_test)
+test_data_accuracy_svm = accuracy_score(Y_test_prediction, Y_test)
 
-print('Accuracy score of the test data : ', test_data_accuracy_svm)
+print('Accuracy score of the test data using SVM : ', test_data_accuracy_svm)
 
 def predict_using_svm(text):
   new_texts = [stemming(text)] # Ensure new_texts is a list of strings

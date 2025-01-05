@@ -94,7 +94,7 @@
 
     {% if result is not none %}
     <div class="result">
-        {% if result == "Please enter valid numbers!" %}
+        {% if result == "Some Error occurred!" %}
             <p class="error">{{ result }}</p>
         {% else %}
             <p><strong>{{ result }}</strong></p>

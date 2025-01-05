@@ -17,10 +17,10 @@ dt_model.fit(X_train, Y_train)
 
 
 # accuracy score on the test data
-X_test_prediction = dt_model.predict(X_test)
-test_data_accuracy_decision_tree = accuracy_score(X_test_prediction, Y_test)
+Y_test_prediction = dt_model.predict(X_test)
+test_data_accuracy_decision_tree = accuracy_score(Y_test_prediction, Y_test)
 
-print('Accuracy score of the test data : ', test_data_accuracy_decision_tree)
+print('Accuracy score of the test data using decision tree : ', test_data_accuracy_decision_tree)
 
 def predict_using_decision_tree(text):
   new_texts = [stemming(text)] # Ensure new_texts is a list of strings

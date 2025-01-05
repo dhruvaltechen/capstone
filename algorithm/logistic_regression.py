@@ -26,10 +26,10 @@ model = LogisticRegression()
 model.fit(X_train, Y_train)
 
 # accuracy score on the test data
-X_test_prediction = model.predict(X_test)
-test_data_accuracy_logistic_regression = accuracy_score(X_test_prediction, Y_test)
+Y_test_prediction = model.predict(X_test)
+test_data_accuracy_logistic_regression = accuracy_score(Y_test_prediction, Y_test)
 
-print('Accuracy score of the test data : ', test_data_accuracy_logistic_regression)
+print('Accuracy score of the test data using lr : ', test_data_accuracy_logistic_regression)
 
 def predict_using_logistic_regression(text):
   new_texts = [stemming(text)] # Ensure new_texts is a list of strings

@@ -17,10 +17,10 @@ nb_model.fit(X_train, Y_train)
 
     
 # accuracy score on the test data
-X_test_prediction = nb_model.predict(X_test)
-test_data_accuracy_naive_bayes = accuracy_score(X_test_prediction, Y_test)
+Y_test_prediction = nb_model.predict(X_test)
+test_data_accuracy_naive_bayes = accuracy_score(Y_test_prediction, Y_test)
 
-print('Accuracy score of the test data : ', test_data_accuracy_naive_bayes)
+print('Accuracy score of the test data using Naive Bayes : ', test_data_accuracy_naive_bayes)
 
 def predict_using_naive_bayes(text):
   new_texts = [stemming(text)] # Ensure new_texts is a list of strings

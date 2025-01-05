@@ -4,6 +4,8 @@ from algorithm.knn import test_data_accuracy_knn
 from algorithm.naive_bayes import test_data_accuracy_naive_bayes
 from algorithm.svm import test_data_accuracy_svm
 
+# we will use both below list to plot the graph
+
 algorithm_labels = ['Logistic Regression', 'Decision Tree', 'KNN', 'Naive Bayes', 'SVM']
 
 accuracy_scores = [
