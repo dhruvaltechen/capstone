@@ -19,7 +19,7 @@ def index():
             # return render_template("index.html", result=result)
 
             # Create a bar chart to display the result
-            ax = plt.subplots()
+            fig, ax = plt.subplots()
             ax.bar(algorithm_labels, accuracy_scores, color=['blue', 'orange', 'green', 'red', 'purple'])
             ax.set_xlabel('Algorithms')
             ax.set_ylabel('Accuracy')
